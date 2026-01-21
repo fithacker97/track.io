@@ -23,35 +23,40 @@ createYearGrid();
 // Task management
 const taskForm = document.getElementById('task-form');
 const taskInput = document.getElementById('task-input');
-const tasksList = document.getElementById('tasks-list');
+const tasksTable = document.getElementById('tasks-table');
+const tasksTbody = document.getElementById('tasks-tbody');
+const dateHeader = document.getElementById('date-header');
 
 let tasks = [];
 
+// Show today's date in header
+const today = new Date();
+const todayDayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+dateHeader.textContent = `${today.toLocaleDateString()} (Day ${todayDayOfYear})`;
+
 function renderTasks() {
-    tasksList.innerHTML = '';
+    tasksTbody.innerHTML = '';
     tasks.forEach((task, idx) => {
-        const li = document.createElement('li');
-        li.className = 'task-item';
-        const label = document.createElement('span');
-        label.className = 'task-label';
-        label.textContent = task.name;
-        li.appendChild(label);
-        // Daily checkboxes for this task
-        const checkboxes = document.createElement('div');
-        checkboxes.className = 'task-checkboxes';
-        for (let d = 1; d <= daysInYear(year); d++) {
-            const cb = document.createElement('input');
-            cb.type = 'checkbox';
-            cb.checked = !!task.days[d];
-            cb.title = `Day ${d}`;
-            cb.addEventListener('change', () => {
-                task.days[d] = cb.checked;
-            });
-            checkboxes.appendChild(cb);
-            if (d > 7) break; // Only show first 7 days for demo, remove for full year
-        }
-        li.appendChild(checkboxes);
-        tasksList.appendChild(li);
+        const tr = document.createElement('tr');
+        tr.className = 'task-row';
+        // Task name cell
+        const nameTd = document.createElement('td');
+        nameTd.className = 'task-name-cell';
+        nameTd.textContent = task.name;
+        tr.appendChild(nameTd);
+        // Checkbox cell for today only
+        const cbTd = document.createElement('td');
+        cbTd.className = 'task-checkbox-cell';
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.checked = !!task.days[todayDayOfYear];
+        cb.title = `Done for ${today.toLocaleDateString()}`;
+        cb.addEventListener('change', () => {
+            task.days[todayDayOfYear] = cb.checked;
+        });
+        cbTd.appendChild(cb);
+        tr.appendChild(cbTd);
+        tasksTbody.appendChild(tr);
     });
 }
 

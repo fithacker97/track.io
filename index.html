@@ -8,17 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <div class="tracker-section">
-            <h2>Yearly Daily Tracker</h2>
-            <div id="days-grid"></div>
-        </div>
         <div class="tasks-section">
             <h2>Tasks</h2>
-            <form id="task-form">
+            <form id="task-form" class="inline-form">
                 <input type="text" id="task-input" placeholder="Add a new task" required>
                 <button type="submit">Add</button>
             </form>
-            <ul id="tasks-list"></ul>
+            <table id="tasks-table">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th id="date-header"></th>
+                    </tr>
+                </thead>
+                <tbody id="tasks-tbody"></tbody>
+            </table>
+        </div>
+        <div class="tracker-section">
+            <h2>Yearly Daily Tracker</h2>
+            <div id="days-grid"></div>
         </div>
     </div>
     <script src="script.js"></script>

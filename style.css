@@ -13,13 +13,13 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     overflow: hidden;
 }
-.tracker-section {
-    flex: 2;
+.tasks-section {
+    flex: 1.2;
     padding: 32px;
     border-right: 1px solid #eee;
 }
-.tasks-section {
-    flex: 1;
+.tracker-section {
+    flex: 2;
     padding: 32px;
 }
 #days-grid {
@@ -41,22 +41,37 @@ body {
     width: 16px;
     height: 16px;
 }
-#tasks-list {
-    list-style: none;
-    padding: 0;
+#tasks-table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 16px;
 }
-.task-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 0;
+#tasks-table th, #tasks-table td {
+    padding: 8px 4px;
     border-bottom: 1px solid #eee;
+    text-align: left;
 }
-.task-label {
-    flex: 1;
+#tasks-table th {
+    background: #f0f0f0;
 }
-.task-checkboxes {
+.task-row {
+    display: table-row;
+}
+.task-name-cell {
+    width: 60%;
+}
+.task-checkbox-cell {
+    text-align: center;
+}
+.inline-form {
     display: flex;
-    gap: 2px;
+    gap: 8px;
+    margin-bottom: 0;
+}
+.inline-form input[type="text"] {
+    flex: 1;
+    padding: 6px 8px;
+}
+.inline-form button {
+    padding: 6px 16px;
 }
