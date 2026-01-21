@@ -1,30 +1,12 @@
 // script.js
-// Generate days for the current year
-const daysGrid = document.getElementById('days-grid');
-const year = new Date().getFullYear();
-const daysInYear = (y) => ((y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0)) ? 366 : 365;
-
-function createYearGrid() {
-    daysGrid.innerHTML = '';
-    for (let d = 1; d <= daysInYear(year); d++) {
-        const cell = document.createElement('div');
-        cell.className = 'day-cell';
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.dataset.day = d;
-        checkbox.title = `Day ${d}`;
-        cell.appendChild(checkbox);
-        daysGrid.appendChild(cell);
-    }
-}
-
-createYearGrid();
 
 // Task management
+
 const taskForm = document.getElementById('task-form');
 const taskInput = document.getElementById('task-input');
 const tasksTable = document.getElementById('tasks-table');
 const tasksTbody = document.getElementById('tasks-tbody');
+const addTaskBtn = document.getElementById('add-task-btn');
 
 let tasks = [];
 const DEFAULT_CHECKBOXES = 30;
@@ -71,6 +53,12 @@ function renderTasks() {
     });
 }
 
+addTaskBtn.addEventListener('click', () => {
+    taskForm.style.display = 'flex';
+    taskInput.focus();
+    addTaskBtn.style.display = 'none';
+});
+
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = taskInput.value.trim();
@@ -78,6 +66,8 @@ taskForm.addEventListener('submit', (e) => {
         tasks.push({ name, days: [], count: DEFAULT_CHECKBOXES });
         taskInput.value = '';
         renderTasks();
+        taskForm.style.display = 'none';
+        addTaskBtn.style.display = 'block';
     }
 });
 

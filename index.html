@@ -10,10 +10,6 @@
     <div class="container">
         <div class="tasks-section">
             <h2>Tasks</h2>
-            <form id="task-form" class="inline-form">
-                <input type="text" id="task-input" placeholder="Add a new task" required>
-                <button type="submit">Add</button>
-            </form>
             <table id="tasks-table">
                 <thead>
                     <tr>
@@ -23,6 +19,11 @@
                 </thead>
                 <tbody id="tasks-tbody"></tbody>
             </table>
+            <button id="add-task-btn" title="Add new task" class="add-task-btn">+</button>
+            <form id="task-form" class="inline-form" style="display:none; margin-top:12px;">
+                <input type="text" id="task-input" placeholder="Add a new task" required>
+                <button type="submit">Add</button>
+            </form>
         </div>
     </div>
     <script src="script.js"></script>
