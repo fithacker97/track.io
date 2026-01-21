@@ -5,22 +5,16 @@ body {
     padding: 0;
 }
 .container {
-    display: flex;
-    max-width: 1200px;
+    max-width: 700px;
     margin: 40px auto;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     overflow: hidden;
+    padding: 32px;
 }
 .tasks-section {
-    flex: 1.2;
-    padding: 32px;
-    border-right: 1px solid #eee;
-}
-.tracker-section {
-    flex: 2;
-    padding: 32px;
+    width: 100%;
 }
 #days-grid {
     display: grid;
@@ -60,8 +54,27 @@ body {
 .task-name-cell {
     width: 60%;
 }
-.task-checkbox-cell {
-    text-align: center;
+.task-checkboxes {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+.task-checkboxes input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+.add-five-btn {
+    margin-left: 8px;
+    padding: 2px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #bbb;
+    background: #f5f5f5;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.add-five-btn:hover {
+    background: #e0e0e0;
 }
 .inline-form {
     display: flex;

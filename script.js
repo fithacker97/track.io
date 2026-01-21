@@ -25,36 +25,47 @@ const taskForm = document.getElementById('task-form');
 const taskInput = document.getElementById('task-input');
 const tasksTable = document.getElementById('tasks-table');
 const tasksTbody = document.getElementById('tasks-tbody');
-const dateHeader = document.getElementById('date-header');
 
 let tasks = [];
-
-// Show today's date in header
-const today = new Date();
-const todayDayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-dateHeader.textContent = `${today.toLocaleDateString()} (Day ${todayDayOfYear})`;
+const DEFAULT_CHECKBOXES = 30;
 
 function renderTasks() {
     tasksTbody.innerHTML = '';
     tasks.forEach((task, idx) => {
+        if (!task.days) task.days = [];
+        if (!task.count) task.count = DEFAULT_CHECKBOXES;
         const tr = document.createElement('tr');
         tr.className = 'task-row';
-        // Task name cell
+        // Task name cell (left)
         const nameTd = document.createElement('td');
         nameTd.className = 'task-name-cell';
         nameTd.textContent = task.name;
         tr.appendChild(nameTd);
-        // Checkbox cell for today only
+        // Checkbox cells (right)
         const cbTd = document.createElement('td');
-        cbTd.className = 'task-checkbox-cell';
-        const cb = document.createElement('input');
-        cb.type = 'checkbox';
-        cb.checked = !!task.days[todayDayOfYear];
-        cb.title = `Done for ${today.toLocaleDateString()}`;
-        cb.addEventListener('change', () => {
-            task.days[todayDayOfYear] = cb.checked;
+        const cbDiv = document.createElement('div');
+        cbDiv.className = 'task-checkboxes';
+        for (let i = 0; i < task.count; i++) {
+            const cb = document.createElement('input');
+            cb.type = 'checkbox';
+            cb.checked = !!task.days[i];
+            cb.title = `Day ${i + 1}`;
+            cb.addEventListener('change', () => {
+                task.days[i] = cb.checked;
+            });
+            cbDiv.appendChild(cb);
+        }
+        // +5 button
+        const addBtn = document.createElement('button');
+        addBtn.textContent = '+5';
+        addBtn.type = 'button';
+        addBtn.className = 'add-five-btn';
+        addBtn.addEventListener('click', () => {
+            task.count += 5;
+            renderTasks();
         });
-        cbTd.appendChild(cb);
+        cbDiv.appendChild(addBtn);
+        cbTd.appendChild(cbDiv);
         tr.appendChild(cbTd);
         tasksTbody.appendChild(tr);
     });
@@ -64,7 +75,7 @@ taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = taskInput.value.trim();
     if (name) {
-        tasks.push({ name, days: {} });
+        tasks.push({ name, days: [], count: DEFAULT_CHECKBOXES });
         taskInput.value = '';
         renderTasks();
     }
