@@ -7,23 +7,46 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="page-header">
+        <div class="page-header-inner">
+            <div>
+                <h1 class="page-title">Tracker</h1>
+                <p class="page-subtitle">Lightweight habit & task tracker — simple, private, fast</p>
+            </div>
+            <div class="page-actions">
+                <div class="header-stats" aria-hidden="true">
+                    <span id="header-total-tasks">0</span> tasks · <span id="header-total-checked">0</span> checked
+                </div>
+                <div class="header-controls">
+                    <input id="header-search" class="header-search" placeholder="Find task..." aria-label="Find task">
+                    <button id="import-btn" class="ghost-btn" title="Import/Export">⤓</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="tasks-section">
-            <h2>Tasks</h2>
+            <div class="empty-state" id="empty-state" style="display:none;">
+                <div class="empty-ill">🎯</div>
+                <div class="empty-copy">
+                    <h3>Nothing here yet</h3>
+                    <p>Add your first task to start tracking daily progress.</p>
+                    <div style="margin-top:12px;">
+                        <button id="empty-add" class="add-task-btn">Add task</button>
+                    </div>
+                </div>
+            </div>
             <table id="tasks-table">
-                <thead>
-                    <tr>
-                        <th>Task</th>
-                        <th colspan="31">Progress</th>
-                    </tr>
-                </thead>
                 <tbody id="tasks-tbody"></tbody>
             </table>
-            <button id="add-task-btn" title="Add new task" class="add-task-btn">+</button>
             <form id="task-form" class="inline-form" style="display:none; margin-top:12px;">
                 <input type="text" id="task-input" placeholder="Add a new task" required>
                 <button type="submit">Add</button>
             </form>
+            <div class="tracker-bottom-controls">
+                <button id="add-task-btn" title="Add new task" class="add-task-btn">+</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
