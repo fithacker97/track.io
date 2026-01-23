@@ -94,15 +94,6 @@ body {
 }
 
 .header-controls{ display:flex; gap:8px; align-items:center }
-.header-search{
-    background: rgba(15,23,42,0.03);
-    border: 1px solid rgba(15,23,42,0.04);
-    padding: 8px 10px;
-    border-radius: 8px;
-    width: 180px;
-    color: #0f172a;
-}
-.header-search:focus{ outline: none; box-shadow: 0 4px 18px rgba(25,118,210,0.12); border-color: var(--accent) }
 .ghost-btn{ background: transparent; border: 1px solid rgba(15,23,42,0.05); padding:8px 10px; border-radius:8px; color:var(--muted); cursor:pointer }
 }
 

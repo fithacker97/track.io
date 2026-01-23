@@ -11,18 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const emptyAdd = document.getElementById('empty-add');
     const headerTotalTasks = document.getElementById('header-total-tasks');
     const headerTotalChecked = document.getElementById('header-total-checked');
-    const headerSearch = document.getElementById('header-search');
 
     let tasks = [];
     const DEFAULT_CHECKBOXES = 30;
 
     function renderTasks() {
-        const query = (headerSearch && headerSearch.value || '').trim().toLowerCase();
-        const visible = tasks.filter(t => t.name.toLowerCase().includes(query));
         tasksTbody.innerHTML = '';
 
-        // empty / filtered state
-        if (visible.length === 0) {
+        // empty state only when there are no tasks
+        if (tasks.length === 0) {
             tasksTable.style.display = 'none';
             if (emptyState) emptyState.style.display = 'flex';
         } else {
@@ -30,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (emptyState) emptyState.style.display = 'none';
         }
 
-        visible.forEach((task, idx) => {
+        tasks.forEach((task, idx) => {
             if (!task.days) task.days = [];
             if (!task.count) task.count = DEFAULT_CHECKBOXES;
             const tr = document.createElement('tr');
@@ -61,24 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 cbDiv.appendChild(cb);
             }
 
-            // append compact +5 inside the checkbox area (looks like a pill)
-            const addBtn = document.createElement('button');
-            addBtn.textContent = '+5';
-            addBtn.type = 'button';
-            addBtn.className = 'add-five-btn';
-            addBtn.setAttribute('aria-label', `Add 5 days to ${task.name}`);
-            addBtn.addEventListener('click', () => {
-                task.count += 5;
-                // ensure the new inputs are visible after render
-                renderTasks();
-                // focus the newly added area (best-effort)
-                requestAnimationFrame(() => {
-                    const row = tasksTbody.children[idx];
-                    if (row) row.querySelector('.checkbox-grid').scrollLeft = row.querySelector('.checkbox-grid').scrollWidth;
-                });
-            });
-
-            cbDiv.appendChild(addBtn);
             cbTd.appendChild(cbDiv);
             tr.appendChild(cbTd);
 
@@ -95,17 +74,17 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => badge.classList.remove('total-pulse'), 320);
             tr.appendChild(totalTd);
 
-            // +5 button after totals
+            // +5 button (original placement)
             const addBtnTd = document.createElement('td');
-            const addBtn = document.createElement('button');
-            addBtn.textContent = '+5';
-            addBtn.type = 'button';
-            addBtn.className = 'add-five-btn';
-            addBtn.addEventListener('click', () => {
+            const addBtnAfter = document.createElement('button');
+            addBtnAfter.textContent = '+5';
+            addBtnAfter.type = 'button';
+            addBtnAfter.className = 'add-five-btn';
+            addBtnAfter.addEventListener('click', () => {
                 task.count += 5;
                 renderTasks();
             });
-            addBtnTd.appendChild(addBtn);
+            addBtnTd.appendChild(addBtnAfter);
             tr.appendChild(addBtnTd);
 
             tasksTbody.appendChild(tr);
@@ -124,15 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
             addTaskBtn.style.display = 'none';
         });
 
-        // empty-state add
+        // empty-state add (reuse same centered add flow)
         if (emptyAdd) emptyAdd.addEventListener('click', () => {
             taskForm.style.display = 'flex';
             taskInput.focus();
             if (addTaskBtn) addTaskBtn.style.display = 'none';
         });
-
-        // search
-        if (headerSearch) headerSearch.addEventListener('input', () => renderTasks());
 
         taskForm.addEventListener('submit', (e) => {
             e.preventDefault();
