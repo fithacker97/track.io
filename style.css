@@ -26,9 +26,10 @@ body {
     padding: 0; /* we'll position container with exact 4% offsets */
 }
 .task-row:hover {
-    background: #eef6ff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(16,24,40,0.04);
+    background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(79,70,229,0.1));
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(99,102,241,0.15);
+    border-color: rgba(99,102,241,0.2);
 }
 
 .container {
@@ -109,23 +110,42 @@ body {
 }
 
 .add-task-btn {
-    width: 56px;
-    height: 56px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
     color: #fff;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    font-weight: 600;
     border: none;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(99,102,241,0.3);
-    transition: transform 0.12s ease, background 0.12s ease;
+    box-shadow: 0 8px 24px rgba(99,102,241,0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.add-task-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+.add-task-btn:hover::before {
+    width: 300px;
+    height: 300px;
 }
 .add-task-btn:hover {
-    background: var(--accent-hover);
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(99,102,241,0.5);
 }
 
 .tasks-section {
@@ -202,51 +222,64 @@ body {
 .checkbox-grid input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
-    border: 1.5px solid rgba(15,23,42,0.12);
-    border-radius: 6px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(99,102,241,0.3);
+    border-radius: 8px;
     display: inline-grid;
     place-content: center;
-    background: linear-gradient(180deg, #fff, #fbfdff);
-    transition: transform .08s ease, box-shadow .12s ease, background .12s;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.8));
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    box-shadow: 0 2px 8px rgba(99,102,241,0.1);
+}
+.checkbox-grid input[type="checkbox"]:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(99,102,241,0.2);
+    transform: scale(1.05);
 }
 .checkbox-grid input[type="checkbox"]:checked{
-    background: linear-gradient(180deg, var(--accent), var(--accent-hover));
-    box-shadow: 0 6px 16px rgba(99,102,241,0.3);
-    border-color: rgba(0,0,0,0.05);
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    box-shadow: 0 6px 16px rgba(99,102,241,0.4);
+    border-color: var(--accent);
 }
-.checkbox-grid input[type="checkbox"]:focus{ box-shadow: 0 6px 18px rgba(25,118,210,0.12); outline: none }
+.checkbox-grid input[type="checkbox"]:focus{ box-shadow: 0 6px 18px rgba(99,102,241,0.3); outline: none }
 .checkbox-grid input[type="checkbox"]::after{
     content: '';
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 2px;
     background: transparent;
     transform: scale(0);
-    transition: transform .12s ease;
+    transition: transform 0.15s ease;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 .checkbox-grid input[type="checkbox"]:checked::after{ transform: scale(1); background: white }
 
 .add-five-btn {
-    margin-left: 12px;
-    padding: 6px 10px;
-    font-size: 13px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    border: 1px solid rgba(15,23,42,0.06);
-    background: rgba(255,255,255,0.9);
-    color: #0f172a;
+    border: 1px solid rgba(99,102,241,0.2);
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.8));
+    color: var(--accent);
     border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(2,6,23,0.04);
-    transition: transform 0.12s, background 0.12s, box-shadow 0.12s;
+    box-shadow: 0 4px 12px rgba(99,102,241,0.1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.add-five-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(2,6,23,0.06) }
+.add-five-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99,102,241,0.2);
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    color: white;
+}
 
 .checkbox-grid .add-five-btn{ margin-left:6px; padding:6px 8px; font-weight:600 }
 
 .task-total-cell{ display:flex; align-items:center; justify-content:center }
-.task-total-cell .badge{ background: linear-gradient(180deg,#eef2ff,#e6f0ff); color: #0f172a; padding:6px 10px; border-radius:999px; font-weight:700; box-shadow: 0 6px 18px rgba(16,24,40,0.04); transition: transform .18s cubic-bezier(.2,.9,.2,1) }
+.task-total-cell .badge{ background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(79,70,229,0.2)); color: var(--accent); padding:8px 12px; border-radius:12px; font-weight:700; box-shadow: 0 4px 12px rgba(99,102,241,0.15); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(99,102,241,0.2) }
+.task-total-cell .badge.total-pulse{ transform: scale(1.1); box-shadow: 0 8px 24px rgba(99,102,241,0.3) }
 .task-total-cell .badge.total-pulse{ transform: scale(1.12); }
 
 .inline-form {
