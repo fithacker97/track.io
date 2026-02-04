@@ -108,6 +108,78 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Special case: Invite & Earn - render dummy referral UI
+        if ((title || '').toLowerCase() === 'invite' || (title || '').toLowerCase() === 'invite & earn') {
+            mainContent.innerHTML = `
+                <section class="tasks-panel placeholder-panel">
+                    <div class="panel-inner">
+                        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+                            <h3 style="margin:0; color:var(--text-primary)">Invite & Earn</h3>
+                            <div class="status-badge">Under progress</div>
+                        </div>
+                        <p style="color:var(--text-secondary); margin-top:10px">Invite friends and earn rewards — a preview of referral tools.</p>
+
+                        <div class="invite-grid">
+                            <div class="referral-card">
+                                <div class="chart-title">Your Referral Code</div>
+                                <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
+                                    <div class="referral-code">TRK-4F7G</div>
+                                    <button class="primary-btn copy-btn">Copy</button>
+                                </div>
+                                <div style="margin-top:12px; color:var(--text-secondary)">Share your code to earn credits when friends sign up.</div>
+                                <div class="share-buttons">
+                                    <button class="ghost-btn">Share Link</button>
+                                    <button class="ghost-btn">Tweet</button>
+                                    <button class="ghost-btn">Email</button>
+                                </div>
+                            </div>
+
+                            <div class="rewards-card">
+                                <div class="chart-title">Rewards</div>
+                                <ul style="margin-top:10px; color:var(--text-secondary)">
+                                  <li>Invite 1 friend — Get 10 credits</li>
+                                  <li>Invite 5 friends — Get Premium 1 month</li>
+                                  <li>Invite 10 friends — Get 50 credits + Premium</li>
+                                </ul>
+                                <div style="margin-top:12px;">
+                                    <button class="primary-btn">Invite Now</button>
+                                </div>
+                            </div>
+
+                            <div class="leaderboard-card" style="grid-column: 1 / -1;">
+                                <div class="chart-title">Referral Leaderboard</div>
+                                <ol style="margin-top:8px; color:var(--text-primary)">
+                                    <li>Alice — 24 invites</li>
+                                    <li>Bob — 17 invites</li>
+                                    <li>Charlie — 12 invites</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+
+            // wire copy button behavior
+            const copyBtn = document.querySelector('.copy-btn');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', () => {
+                    const codeEl = document.querySelector('.referral-code');
+                    const code = codeEl ? codeEl.textContent.trim() : '';
+                    if (navigator.clipboard && code) {
+                        navigator.clipboard.writeText(code).then(() => {
+                            const old = copyBtn.textContent;
+                            copyBtn.textContent = 'Copied';
+                            setTimeout(() => copyBtn.textContent = old, 1800);
+                        }).catch(()=>{
+                            // fallback
+                            alert('Copy: ' + code);
+                        });
+                    }
+                });
+            }
+            return;
+        }
+
         mainContent.innerHTML = `
             <section class="tasks-panel placeholder-panel">
                 <div class="panel-inner">
