@@ -186,7 +186,7 @@ body {
     overflow-y: auto; /* scroll vertically when more than visible area */
     overflow-x: hidden;
     padding-bottom: 4px;
-    max-height: 180px; /* keep column compact so rows remain thin */
+    max-height: 220px; /* allow slightly more visible checkboxes while keeping rows compact */
 }
 
 .checkbox-grid::-webkit-scrollbar {
@@ -202,11 +202,11 @@ body {
     appearance: none;
     width: 18px;
     height: 18px;
-    border: 2px solid rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.28);
     border-radius: 4px;
     display: inline-grid;
     place-content: center;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.06);
     transition: all 0.12s ease;
     cursor: pointer;
     box-shadow: none;
@@ -219,6 +219,9 @@ body {
     background: linear-gradient(135deg, var(--accent), var(--accent-hover));
     border-color: var(--accent);
     box-shadow: 0 6px 18px rgba(79,70,229,0.18);
+}
+.checkbox-grid input[type="checkbox"]:not(:checked) {
+    opacity: 0.95; /* keep unchecked visible */
 }
 .checkbox-grid input[type="checkbox"]:focus{
     outline: 3px solid rgba(124,92,255,0.12);
