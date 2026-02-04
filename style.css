@@ -60,6 +60,8 @@ body {
 .avatar.small{ width:36px; height:36px; border-radius:10px; background: linear-gradient(135deg,#eef2ff,#e9edff); color:var(--accent); display:flex; align-items:center; justify-content:center; font-weight:700 }
 
 .content{ padding:24px 28px; display:flex; flex-direction:column; }
+.status-badge{ display:inline-block; background: rgba(255,200,80,0.12); color: #ffd27a; padding:6px 10px; border-radius:999px; font-weight:700; font-size:0.82rem; border:1px solid rgba(255,200,80,0.12) }
+.placeholder-panel .panel-inner{ padding:18px; border-radius:12px }
 .tasks-panel{ max-width:1200px; margin:0 auto; display:flex; flex-direction:column; flex:1 }
 .panel-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px }
 .panel-actions{ display:flex; gap:8px }
