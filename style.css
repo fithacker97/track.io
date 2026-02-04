@@ -37,17 +37,17 @@ body {
 }
 
 .app-shell{ display:flex; height:100vh; }
-.sidebar{ width:220px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:28px 18px; display:flex; flex-direction:column; justify-content:space-between; border-right: 1px solid rgba(255,255,255,0.03); overflow:auto }
+.sidebar{ width:220px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px 16px; display:flex; flex-direction:column; justify-content:flex-start; border-right: 1px solid rgba(255,255,255,0.03); overflow:auto }
 .brand-compact{ display:flex; align-items:center; gap:12px; color:var(--text-primary); font-weight:700 }
 .brand-name{ font-weight:800; font-size:1.05rem }
-.sidebar-nav{ display:flex; flex-direction:column; gap:8px; margin-top:20px }
+.sidebar-nav{ display:flex; flex-direction:column; gap:8px; margin-top:10px }
 .nav-btn{ background:transparent; color:var(--text-primary); border:none; padding:8px 12px; text-align:left; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:10px }
 .nav-btn span{ display:inline-block }
 .nav-btn .nav-icon{ width:18px; height:18px; color:rgba(255,255,255,0.72); flex:0 0 18px }
 .nav-btn.active{ background: linear-gradient(90deg, rgba(124,92,255,0.12), rgba(91,59,230,0.08)); color:var(--accent); }
 .nav-btn.active .nav-icon{ color: var(--accent) }
 .nav-btn:hover{ background: rgba(124,92,255,0.04); color:var(--text-primary) }
-.sidebar-footer{ padding-top:12px }
+.sidebar-footer{ padding-top:12px; margin-top:auto }
 .primary-btn{ background: linear-gradient(90deg,var(--accent),var(--accent-hover)); color:white; border:none; padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:700 }
 
 .main-area{ flex:1; display:flex; flex-direction:column; overflow:hidden }
