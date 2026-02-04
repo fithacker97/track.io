@@ -73,10 +73,10 @@ body {
 
 .tracker-title {
     font-family: 'Segoe UI', 'Arial Black', Arial, sans-serif;
-    font-size: 2.6rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #111827;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: var(--text-primary);
     margin: 0;
     text-align: center;
 }
@@ -152,7 +152,7 @@ body {
 }
 
 .task-row:nth-child(odd) {
-    background: #fbfdff;
+    background: transparent; /* keep dark theme consistent */
 }
 
 .task-name-cell {
@@ -160,7 +160,8 @@ body {
     padding: 8px 16px;
     font-weight: 700;
     color: var(--text-primary);
-    font-size: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.2;
 }
 
 .task-total-cell {
@@ -179,7 +180,7 @@ body {
 /* Single-line horizontal checkbox row with overflow */
 .checkbox-grid {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     align-items: center;
     overflow-x: auto;
     padding-bottom: 6px;
@@ -196,40 +197,42 @@ body {
 .checkbox-grid input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgba(99,102,241,0.3);
-    border-radius: 8px;
+    width: 26px;
+    height: 26px;
+    border: 2px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
     display: inline-grid;
     place-content: center;
-    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,252,0.8));
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255,255,255,0.02);
+    transition: all 0.15s ease;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(99,102,241,0.1);
+    box-shadow: none;
 }
 .checkbox-grid input[type="checkbox"]:hover {
-    border-color: var(--accent);
-    box-shadow: 0 4px 12px rgba(99,102,241,0.2);
-    transform: scale(1.05);
+    border-color: rgba(124,92,255,0.6);
+    transform: translateY(-2px) scale(1.03);
 }
 .checkbox-grid input[type="checkbox"]:checked{
     background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-    box-shadow: 0 6px 16px rgba(99,102,241,0.4);
     border-color: var(--accent);
+    box-shadow: 0 6px 18px rgba(79,70,229,0.18);
 }
-.checkbox-grid input[type="checkbox"]:focus{ box-shadow: 0 6px 18px rgba(99,102,241,0.3); outline: none }
+.checkbox-grid input[type="checkbox"]:focus{
+    outline: 3px solid rgba(124,92,255,0.12);
+    outline-offset: 2px;
+}
 .checkbox-grid input[type="checkbox"]::after{
     content: '✓';
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 800;
     color: white;
     transform: scale(0);
-    transition: transform 0.15s ease;
+    transition: transform 0.12s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.checkbox-grid input[type="checkbox"]:checked::after{ transform: scale(1); background: white }
+.checkbox-grid input[type="checkbox"]:checked::after{ transform: scale(1) }
 
 .add-five-btn {
     padding: 8px 12px;
