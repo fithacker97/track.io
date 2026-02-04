@@ -30,10 +30,10 @@ body {
     padding: 0; /* we'll position container with exact 4% offsets */
 }
 .task-row:hover {
-    background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(79,70,229,0.1));
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(99,102,241,0.15);
-    border-color: rgba(99,102,241,0.2);
+    background: linear-gradient(180deg, rgba(124,92,255,0.04), rgba(124,92,255,0.02));
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
 }
 
 .app-shell{ display:flex; height:100vh; }
@@ -156,8 +156,9 @@ body {
 }
 
 .task-name-cell {
-    width: 36%;
-    padding: 8px 16px;
+    width: 20%;
+    min-width: 180px;
+    padding: 8px 8px 8px 16px; /* reduce right-side spacing so checkboxes start closer */
     font-weight: 700;
     color: var(--text-primary);
     font-size: 1.05rem;
@@ -173,8 +174,7 @@ body {
 }
 
 .task-checkbox-cell {
-    padding: 6px 12px;
-    max-width: calc(100% - 36% - 92px - 140px); /* reserve space for name, totals and actions */
+    padding: 6px 6px 6px 8px; /* tighter left padding so grid starts just after name */
 }
 
 /* Single-line horizontal checkbox row with overflow */
@@ -182,7 +182,8 @@ body {
     display: flex;
     gap: 10px;
     align-items: center;
-    overflow-x: auto;
+    flex-wrap: wrap; /* allow wrap so horizontal scroll is avoided */
+    overflow-x: hidden; /* avoid horizontal scroll; wrapping will keep checkboxes visible */
     padding-bottom: 6px;
 }
 
@@ -210,7 +211,7 @@ body {
 }
 .checkbox-grid input[type="checkbox"]:hover {
     border-color: rgba(124,92,255,0.6);
-    transform: translateY(-2px) scale(1.03);
+    transform: none; /* keep hover subtle and stable */
 }
 .checkbox-grid input[type="checkbox"]:checked{
     background: linear-gradient(135deg, var(--accent), var(--accent-hover));
@@ -220,6 +221,13 @@ body {
 .checkbox-grid input[type="checkbox"]:focus{
     outline: 3px solid rgba(124,92,255,0.12);
     outline-offset: 2px;
+}
+
+/* On narrow screens allow a horizontal scroll if needed, but keep 20 visible on wide screens */
+@media (max-width: 900px) {
+    .task-name-cell { width: 28%; min-width: 140px }
+    .checkbox-grid { flex-wrap: nowrap; overflow-x: auto }
+    .checkbox-grid input[type="checkbox"] { width: 22px; height: 22px }
 }
 .checkbox-grid input[type="checkbox"]::after{
     content: '✓';
