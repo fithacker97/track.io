@@ -180,11 +180,13 @@ body {
 /* Single-line horizontal checkbox row with overflow */
 .checkbox-grid {
     display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap; /* allow wrap so horizontal scroll is avoided */
-    overflow-x: hidden; /* avoid horizontal scroll; wrapping will keep checkboxes visible */
+    flex-direction: column; /* vertical stack of checkboxes */
+    gap: 8px;
+    align-items: flex-start;
+    overflow-y: auto; /* scroll vertically when more than visible area */
+    overflow-x: hidden;
     padding-bottom: 6px;
+    max-height: 520px; /* limit height so internal scroll appears; adjust if needed */
 }
 
 .checkbox-grid::-webkit-scrollbar {
@@ -223,10 +225,10 @@ body {
     outline-offset: 2px;
 }
 
-/* On narrow screens allow a horizontal scroll if needed, but keep 20 visible on wide screens */
+/* On narrow screens keep vertical but reduce size and max-height */
 @media (max-width: 900px) {
     .task-name-cell { width: 28%; min-width: 140px }
-    .checkbox-grid { flex-wrap: nowrap; overflow-x: auto }
+    .checkbox-grid { max-height: 360px }
     .checkbox-grid input[type="checkbox"] { width: 22px; height: 22px }
 }
 .checkbox-grid input[type="checkbox"]::after{
