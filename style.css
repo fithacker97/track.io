@@ -47,7 +47,7 @@ body {
 .primary-btn{ background: linear-gradient(90deg,var(--accent),var(--accent-hover)); color:white; border:none; padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:700 }
 
 .main-area{ flex:1; display:flex; flex-direction:column; overflow:hidden }
-.topbar{ height:84px; display:flex; align-items:center; justify-content:space-between; padding:18px 28px; border-bottom:1px solid rgba(255,255,255,0.02); background: linear-gradient(180deg, rgba(0,0,0,0.03), transparent) }
+.topbar{ height:56px; display:flex; align-items:center; justify-content:space-between; padding:12px 20px; border-bottom:1px solid rgba(255,255,255,0.02); background: linear-gradient(180deg, rgba(0,0,0,0.03), transparent) }
 .top-title{ margin:0; font-size:1.15rem; color:var(--text-primary) }
 .top-sub{ color:var(--text-secondary); font-size:0.9rem }
 .topbar-right{ display:flex; gap:12px; align-items:center }
@@ -59,7 +59,7 @@ body {
 .panel-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px }
 .panel-actions{ display:flex; gap:8px }
 .ghost-btn{ background:transparent; border:1px solid rgba(255,255,255,0.04); padding:8px 10px; color:var(--text-primary); border-radius:8px }
-.tasks-list-wrapper{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.02); display:flex; flex-direction:column; flex:1; overflow:auto }
+.tasks-list-wrapper{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:8px; border-radius:10px; border:1px solid rgba(255,255,255,0.02); display:flex; flex-direction:column; flex:1; overflow:auto }
 .tasks-table{ width:100%; border-collapse:collapse; table-layout:fixed }
 
 .tracker-header {
@@ -141,7 +141,7 @@ body {
 
 /* table cell defaults for consistent alignment */
 .tasks-table td {
-    padding: 12px 14px;
+    padding: 8px 10px;
     vertical-align: middle;
     border-bottom: 1px solid rgba(255,255,255,0.02);
 }
@@ -156,13 +156,13 @@ body {
 }
 
 .task-name-cell {
-    width: 20%;
-    min-width: 180px;
-    padding: 8px 8px 8px 16px; /* reduce right-side spacing so checkboxes start closer */
+    width: 18%;
+    min-width: 140px;
+    padding: 6px 8px 6px 12px; /* reduce right-side spacing so checkboxes start closer */
     font-weight: 700;
     color: var(--text-primary);
-    font-size: 1.05rem;
-    line-height: 1.2;
+    font-size: 1.02rem;
+    line-height: 1.1;
 }
 
 .task-total-cell {
@@ -181,12 +181,12 @@ body {
 .checkbox-grid {
     display: flex;
     flex-direction: column; /* vertical stack of checkboxes */
-    gap: 8px;
+    gap: 6px;
     align-items: flex-start;
     overflow-y: auto; /* scroll vertically when more than visible area */
     overflow-x: hidden;
-    padding-bottom: 6px;
-    max-height: 520px; /* limit height so internal scroll appears; adjust if needed */
+    padding-bottom: 4px;
+    max-height: 180px; /* keep column compact so rows remain thin */
 }
 
 .checkbox-grid::-webkit-scrollbar {
@@ -200,14 +200,14 @@ body {
 .checkbox-grid input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 26px;
-    height: 26px;
+    width: 18px;
+    height: 18px;
     border: 2px solid rgba(255,255,255,0.12);
-    border-radius: 6px;
+    border-radius: 4px;
     display: inline-grid;
     place-content: center;
     background: rgba(255,255,255,0.02);
-    transition: all 0.15s ease;
+    transition: all 0.12s ease;
     cursor: pointer;
     box-shadow: none;
 }
@@ -233,7 +233,7 @@ body {
 }
 .checkbox-grid input[type="checkbox"]::after{
     content: '✓';
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 800;
     color: white;
     transform: scale(0);
