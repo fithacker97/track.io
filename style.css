@@ -38,9 +38,11 @@ body {
 
 .app-shell{ display:flex; height:100vh; }
 .sidebar{ width:220px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px 16px; display:flex; flex-direction:column; justify-content:flex-start; border-right: 1px solid rgba(255,255,255,0.03); overflow:auto }
-.brand-compact{ display:flex; align-items:center; gap:16px; color:var(--text-primary); font-weight:700 }
-.brand-icon{ width:48px; height:48px; flex:0 0 48px; border-radius:8px }
-.brand-name{ font-weight:900; font-size:1.18rem; letter-spacing:0.6px; color:var(--text-primary) }
+.brand-compact{ display:flex; align-items:center; gap:16px; color:var(--text-primary); font-weight:700; padding:8px; border-radius:10px; background: rgba(255,255,255,0.01); }
+.brand-icon{ width:48px; height:48px; flex:0 0 48px; border-radius:8px; box-shadow: 0 6px 18px rgba(91,59,230,0.06); }
+.brand-name{ font-weight:900; font-size:1.18rem; letter-spacing:0.6px; color:var(--text-primary); }
+/* create a clear gap between the brand and navigation */
+.sidebar-nav{ display:flex; flex-direction:column; gap:8px; margin-top:18px }
 .sidebar-nav{ display:flex; flex-direction:column; gap:8px; margin-top:10px }
 .nav-btn{ background:transparent; color:var(--text-primary); border:none; padding:12px 14px; text-align:left; border-radius:10px; cursor:pointer; display:flex; align-items:center; gap:12px; font-size:0.98rem; font-weight:600 }
 .nav-btn span{ display:inline-block }
