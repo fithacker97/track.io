@@ -64,6 +64,14 @@ body {
 .content{ padding:24px 28px; display:flex; flex-direction:column; }
 .status-badge{ display:inline-block; background: rgba(255,200,80,0.12); color: #ffd27a; padding:6px 10px; border-radius:999px; font-weight:700; font-size:0.82rem; border:1px solid rgba(255,200,80,0.12) }
 .placeholder-panel .panel-inner{ padding:18px; border-radius:12px }
+.insights-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:16px }
+.chart-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.02); box-shadow: 0 6px 18px rgba(2,6,23,0.35) }
+.chart-title{ font-size:0.95rem; font-weight:700; color:var(--text-primary); margin-bottom:8px }
+.chart-svg{ width:100%; height:160px }
+.insight-stats{ display:flex; gap:12px; margin-top:10px }
+.stat-block{ flex:1; background: rgba(255,255,255,0.02); padding:8px 10px; border-radius:8px; text-align:center }
+.stat-block .value{ font-weight:800; color:var(--text-primary); font-size:1.05rem }
+.stat-block .label{ font-size:0.78rem; color:var(--text-secondary) }
 .tasks-panel{ max-width:1200px; margin:0 auto; display:flex; flex-direction:column; flex:1 }
 .panel-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px }
 .panel-actions{ display:flex; gap:8px }
