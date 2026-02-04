@@ -30,14 +30,42 @@ document.addEventListener('DOMContentLoaded', () => {
                                     }).join('')}
                                     <defs>
                                         <linearGradient id="barGrad" x1="0" x2="0" y1="0" y2="1">
-                                            <stop offset="0%" stop-color="#7C5CFF" />
-                                            <stop offset="100%" stop-color="#5B3BE6" />
-                                        </linearGradient>
-                                    </defs>
-                                </svg>
-                            </div>
+                                    <div class="chart-card">
+                                        <div class="chart-title">Quick Stats</div>
+                                        <div class="insight-stats">
+                                            <div class="stat-block"><div class="value">24</div><div class="label">Active Tasks</div></div>
+                                            <div class="stat-block"><div class="value">154</div><div class="label">Completions</div></div>
+                                            <div class="stat-block"><div class="value">6d</div><div class="label">Avg Streak</div></div>
+                                        </div>
+                                        <div class="top-tasks">
+                                            <div class="chart-title" style="margin-top:12px">Top Tasks</div>
+                                            ${[
+                                                {name:'Read 20 pages',pct:82},
+                                                {name:'Exercise',pct:68},
+                                                {name:'Meditate',pct:44},
+                                                {name:'Write Journal',pct:30}
+                                            ].map(t=>`<div class="task-progress"><div class="name">${t.name}</div><div class="bar"><i style="width:${t.pct}%"></i></div><div style="width:36px;text-align:right;color:var(--text-secondary);font-weight:700">${t.pct}%</div></div>`).join('')}
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div class="chart-card">
+                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:16px">
+                                    <div class="chart-card">
+                                        <div class="chart-title">Recent Activity</div>
+                                        <div class="activity-list">
+                                            <div class="activity-item"><div class="activity-dot"></div><div><div class="message">Completed <strong>Exercise</strong></div><div style="color:var(--text-secondary);font-size:0.85rem">2 hours ago</div></div></div>
+                                            <div class="activity-item"><div class="activity-dot" style="background:#5B3BE6"></div><div><div class="message">Added new task <strong>Read 20 pages</strong></div><div style="color:var(--text-secondary);font-size:0.85rem">Yesterday</div></div></div>
+                                            <div class="activity-item"><div class="activity-dot" style="background:#F59E0B"></div><div><div class="message">Missed <strong>Meditate</strong></div><div style="color:var(--text-secondary);font-size:0.85rem">3 days ago</div></div></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="chart-card">
+                                        <div class="chart-title">Activity Heatmap</div>
+                                        <div class="heatmap">
+                                            ${[0,1,2,3,4,2,1].map(v=>`<div class="cell heat-${v}"><i></i></div>`).join('')}
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="chart-title">30-Day Streak</div>
                                 <svg class="chart-svg" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
                                     <!-- simple area/line chart -->

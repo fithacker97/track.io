@@ -72,6 +72,24 @@ body {
 .stat-block{ flex:1; background: rgba(255,255,255,0.02); padding:8px 10px; border-radius:8px; text-align:center }
 .stat-block .value{ font-weight:800; color:var(--text-primary); font-size:1.05rem }
 .stat-block .label{ font-size:0.78rem; color:var(--text-secondary) }
+
+.top-tasks{ margin-top:12px; display:flex; flex-direction:column; gap:8px }
+.task-progress{ display:flex; align-items:center; gap:10px }
+.task-progress .name{ flex:0 0 160px; color:var(--text-primary); font-weight:700 }
+.task-progress .bar{ flex:1; height:10px; background: rgba(255,255,255,0.03); border-radius:6px; overflow:hidden }
+.task-progress .bar > i{ display:block; height:100%; background: linear-gradient(90deg,#7C5CFF,#5B3BE6); border-radius:6px }
+.activity-list{ margin-top:12px; display:flex; flex-direction:column; gap:8px }
+.activity-item{ display:flex; gap:10px; align-items:flex-start }
+.activity-dot{ width:10px; height:10px; border-radius:50%; background:#7C5CFF; margin-top:6px }
+.activity-item .message{ color:var(--text-primary); font-weight:600 }
+.heatmap{ display:grid; grid-template-columns: repeat(7, 1fr); gap:6px; margin-top:12px }
+.heatmap .cell{ width:100%; padding-top:100%; position:relative; border-radius:4px }
+.heatmap .cell > i{ position:absolute; inset:0; border-radius:4px }
+.heat-0 > i{ background: rgba(255,255,255,0.02) }
+.heat-1 > i{ background: rgba(124,92,255,0.08) }
+.heat-2 > i{ background: rgba(124,92,255,0.18) }
+.heat-3 > i{ background: rgba(124,92,255,0.28) }
+.heat-4 > i{ background: linear-gradient(90deg,#7C5CFF,#5B3BE6) }
 .tasks-panel{ max-width:1200px; margin:0 auto; display:flex; flex-direction:column; flex:1 }
 .panel-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px }
 .panel-actions{ display:flex; gap:8px }
