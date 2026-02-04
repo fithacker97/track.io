@@ -61,13 +61,13 @@ body {
 .stat{ color:var(--text-secondary); font-weight:600 }
 .avatar.small{ width:36px; height:36px; border-radius:10px; background: linear-gradient(135deg,#eef2ff,#e9edff); color:var(--accent); display:flex; align-items:center; justify-content:center; font-weight:700 }
 
-.content{ padding:24px 28px; display:flex; flex-direction:column; }
+.content{ padding:12px 16px; display:flex; flex-direction:column; }
 .status-badge{ display:inline-block; background: rgba(255,200,80,0.12); color: #ffd27a; padding:6px 10px; border-radius:999px; font-weight:700; font-size:0.82rem; border:1px solid rgba(255,200,80,0.12) }
-.placeholder-panel .panel-inner{ padding:18px; border-radius:12px }
-.insights-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:16px }
-.chart-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.02); box-shadow: 0 6px 18px rgba(2,6,23,0.35) }
-.chart-title{ font-size:0.95rem; font-weight:700; color:var(--text-primary); margin-bottom:8px }
-.chart-svg{ width:100%; height:160px }
+.placeholder-panel .panel-inner{ padding:24px; border-radius:12px }
+.insights-grid{ display:grid; grid-template-columns: 2fr 1fr; gap:18px; margin-top:12px }
+.chart-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:10px; border:1px solid rgba(255,255,255,0.02); box-shadow: 0 6px 18px rgba(2,6,23,0.35) }
+.chart-title{ font-size:0.98rem; font-weight:700; color:var(--text-primary); margin-bottom:10px }
+.chart-svg{ width:100%; height:220px }
 .insight-stats{ display:flex; gap:12px; margin-top:10px }
 .stat-block{ flex:1; background: rgba(255,255,255,0.02); padding:8px 10px; border-radius:8px; text-align:center }
 .stat-block .value{ font-weight:800; color:var(--text-primary); font-size:1.05rem }
@@ -92,7 +92,7 @@ body {
 .heat-4 > i{ background: linear-gradient(90deg,#7C5CFF,#5B3BE6) }
 
 /* Invite & Earn styles */
-.invite-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:16px }
+.invite-grid{ display:grid; grid-template-columns: 2fr 1fr; gap:16px; margin-top:12px }
 .referral-card, .rewards-card, .leaderboard-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:10px; border:1px solid rgba(255,255,255,0.02) }
 .referral-code{ font-family: monospace; background: rgba(255,255,255,0.03); padding:8px 12px; border-radius:8px; font-weight:800; color:var(--text-primary); letter-spacing:1px }
 .share-buttons{ display:flex; gap:8px; margin-top:8px }
