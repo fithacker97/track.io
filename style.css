@@ -140,14 +140,26 @@ body {
     text-align: left;
 }
 
-.task-row { display:flex; align-items:center; gap:20px; padding:12px; border-radius:10px; margin-bottom:10px }
+.task-row { display: table-row; }
+
+/* table cell defaults for consistent alignment */
+.tasks-table td {
+    padding: 12px 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+/* hover effect applied to the tr via a pseudo-row background */
+.tasks-table tr:hover td {
+    background: linear-gradient(135deg, rgba(124,92,255,0.03), rgba(91,59,230,0.02));
+}
 
 .task-row:nth-child(odd) {
     background: #fbfdff;
 }
 
 .task-name-cell {
-    width: 30%;
+    width: 36%;
     padding: 8px 16px;
     font-weight: 700;
     color: var(--text-primary);
@@ -155,16 +167,16 @@ body {
 }
 
 .task-total-cell {
-    width: 88px;
+    width: 92px;
     padding: 6px 12px;
     text-align: center;
     font-weight: 700;
-    color: #0f172a;
+    color: var(--text-primary);
 }
 
 .task-checkbox-cell {
-    flex: 1 1 auto;
     padding: 6px 12px;
+    max-width: calc(100% - 36% - 92px - 140px); /* reserve space for name, totals and actions */
 }
 
 /* Single-line horizontal checkbox row with overflow */
