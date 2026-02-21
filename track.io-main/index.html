@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yearly Daily Tracker</title>
-    <!-- Inter font for a modern SaaS look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -43,17 +43,22 @@
                                 <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2l3 6 6 .5-4.5 3.8L18 20l-6-3.2L6 20l1.5-7.7L3 8.5 9 8 12 2z" fill="currentColor"/></svg>
                                 <span>Insights</span>
                             </button>
-                            <button class="nav-btn" data-tab="premium" aria-pressed="false">
-                                <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2a7 7 0 0 1 7 7v3a7 7 0 0 1-14 0V9a7 7 0 0 1 7-7zm0 20v-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                <span>Premium</span>
-                            </button>
-                            <button class="nav-btn" data-tab="invite" aria-pressed="false">
-                                <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z" fill="currentColor"/></svg>
-                                <span>Invite &amp; Earn</span>
-                            </button>
                         </nav>
                         <div class="sidebar-footer">
-                            <!-- Add task button removed for redesign -->
+                            <div class="sidebar-tools">
+                                <button class="tool-icon-btn" id="themeToggleBtn" type="button" aria-label="Change theme" title="Change theme">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path d="M12 3V5M12 19V21M5.64 5.64L7.05 7.05M16.95 16.95L18.36 18.36M3 12H5M19 12H21M5.64 18.36L7.05 16.95M16.95 7.05L18.36 5.64" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+                                    </svg>
+                                </button>
+                                <button class="tool-icon-btn" id="logoutBtn" type="button" aria-label="Log out" title="Log out">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path d="M14 7V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                                        <path d="M10 12h10m0 0-3-3m3 3-3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </aside>
 
@@ -71,6 +76,21 @@
                         </main>
                     </div>
                 </div>
+
+                <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+                    <button class="mobile-nav-btn active" data-tab="overview" aria-pressed="true">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 13h8V3H3v10zM3 21h8v-6H3v6zM13 21h8V11h-8v10zM13 3v6h8V3h-8z" fill="currentColor"/></svg>
+                        <span>Overview</span>
+                    </button>
+                    <button class="mobile-nav-btn" data-tab="tasks" aria-pressed="false">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 3h14v2H5V3zm0 4h10v2H5V7zm0 4h14v6H5v-6z" fill="currentColor"/></svg>
+                        <span>Tasks</span>
+                    </button>
+                    <button class="mobile-nav-btn" data-tab="insights" aria-pressed="false">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2l3 6 6 .5-4.5 3.8L18 20l-6-3.2L6 20l1.5-7.7L3 8.5 9 8 12 2z" fill="currentColor"/></svg>
+                        <span>Insights</span>
+                    </button>
+                </nav>
             </div>
         </div>
     </div>
